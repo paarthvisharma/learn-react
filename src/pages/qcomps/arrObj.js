@@ -7,7 +7,15 @@ const initialList = [
   { id: 2, title: 'Terracotta Army', seen: true },
 ];
 
+function deepcopy(list){
+  return list.map((i) => ({...i}));
+
+}
 export default function BucketList() {
+  // Use the above function to deep copy or just user professor's method and use the new return functionaity
+  // const [myList, setMyList] = useState(deepcopy(initialList));
+  // const [yourList, setYourList] = useState(
+  //   deepcopy(initialList)
   const [myList, setMyList] = useState(initialList);
   const [yourList, setYourList] = useState(
     initialList
@@ -16,7 +24,8 @@ export default function BucketList() {
   function handleToggleMyList(artworkId, nextSeen) {
     const tmpList = myList.map(e => {
         if (e.id === artworkId) {
-            e.seen = nextSeen
+            // e.seen = nextSeen
+            return {...e, seen:nextSeen}
         }
         return e
     });
@@ -26,7 +35,8 @@ export default function BucketList() {
   function handleToggleYourList(artworkId, nextSeen) {
     const tmpList = yourList.map(e => {
         if (e.id === artworkId) {
-            e.seen = nextSeen
+            // e.seen = nextSeen
+            return {...e, seen:nextSeen}
         }
         return e
     });
